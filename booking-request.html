@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Document</title>
+        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="stylesheet" href="assets/css/styles.css" />
+    </head>
+    <body>
+        <div class="modal__overlay">
+            <div class="booking-modal">
+                <button class="modal__close" aria-label="Закрыть">&times;</button>
+                <div class="modal__title">Заявка на бронирование</div>
+                <div class="booking-modal__content">
+                    <div class="booking-modal__left">
+                        <div class="booking-modal__img-wrapper">
+                            <img
+                                src="assets/images/booking-plan.svg"
+                                alt="План квартиры"
+                                class="booking-modal__plan-img"
+                            />
+                        </div>
+                        <div class="booking-modal__badges">
+                            <span class="booking-modal__badge">Вид на реку</span>
+                            <span class="booking-modal__badge">Доходность 20% годовых</span>
+                        </div>
+                        <div class="booking-modal__info-row">
+                            <span>Корпус 3</span>
+                            <span class="booking-modal__info-sep">|</span>
+                            <span>Секция 1</span>
+                            <span class="booking-modal__info-sep">|</span>
+                            <span>Этаж 22</span>
+                            <span class="booking-modal__info-sep">|</span>
+                            <span>№168</span>
+                        </div>
+                        <div class="booking-modal__price-row">
+                            <span class="booking-modal__price">от 13 498 450&nbsp;₽</span>
+                            <span class="booking-modal__discount">до -20%</span>
+                        </div>
+                    </div>
+
+                    <div class="booking-modal__right">
+                        <form class="booking-modal__form">
+                            <input type="text" class="booking-modal__input" placeholder="Имя" required />
+                            <input type="tel" class="main__callback-input booking-modal__input" placeholder="+ 7 ( _ _ _ ) _ _ _ - _ _ - _ _" value="+ 7 ( _ _ _ ) _ _ _ - _ _ - _ _" />
+
+                            <input type="email" class="booking-modal__input" placeholder="E-mail" required />
+                            <div class="booking-modal__checkbox-row">
+                                <label class="booking-modal__checkbox-label">
+                                    <input type="checkbox" required class="booking-modal__checkbox-input" />
+                                    <span class="booking-modal__checkbox-custom"></span>
+                                    <span class="booking-modal__checkbox-text">
+                                     Я ознакомлен(-а) с <a href="#" class="booking-modal__checkbox-link">Политикой обработки в отношении персональных данных</a> и даю свое
+                                    <a href="#" class="booking-modal__checkbox-link">согласие на обработку персональных данных</a>
+
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="booking-modal__checkbox-row">
+                                <label class="booking-modal__checkbox-label">
+                                    <input type="checkbox" required class="booking-modal__checkbox-input" />
+                                    <span class="booking-modal__checkbox-custom"></span>
+                                    <span class="booking-modal__checkbox-text">
+                                    Даю свое согласие на
+                                    <a href="#" class="viewing-modal__checkbox-link">получение рекламных материалов.</a>
+                                    </span>
+                                </label>
+                            </div>
+
+
+                            <button type="submit" class="booking-modal__submit-btn">Отправить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            const isPhoneEmpty = (value) => {
+                const digits = value.replace(/\D/g, '');
+                return digits.length < 11; // +7 и 10 цифр
+            };
+
+
+            document.addEventListener('click', (event) => {
+                if (event.target.closest('.booking-modal__submit-btn')) {
+                    event.preventDefault();
+
+                    const form = event.target.closest('.booking-modal__form');
+                    if (!form) return;
+
+                    const inputs = form.querySelectorAll('.booking-modal__input');
+                    const checkbox = form.querySelector('.booking-modal__checkbox-input');
+
+                    let isValid = true;
+
+                    inputs.forEach(input => {
+                        const isTel = input.type === 'tel';
+                        const isEmpty = isTel
+                            ? isPhoneEmpty(input.value)
+                            : input.value.trim() === '';
+
+                        if (isEmpty) {
+                            input.classList.add('error');
+                            isValid = false;
+                        } else {
+                            input.classList.remove('error');
+                        }
+                    });
+
+                    if (checkbox && !checkbox.checked) {
+                        checkbox.classList.add('error');
+                        isValid = false;
+                    } else if (checkbox) {
+                        checkbox.classList.remove('error');
+                    }
+
+                    if (!isValid) return;
+
+                    const name = form.querySelector('input[placeholder="Имя"]')?.value.trim();
+                    const phone = form.querySelector('input[placeholder="Телефон"]')?.value.trim();
+                    const email = form.querySelector('input[placeholder="E-mail"]')?.value.trim();
+
+                    console.log('Booking форма отправлена:', {
+                        name,
+                        phone,
+                        email
+                    });
+
+                    const modalOverlay = form.closest('.modal-overlay');
+                    if (modalOverlay) {
+                        modalOverlay.remove();
+                    }
+                }
+            });
+
+        </script>
+
+        <script src="assets/js/script.js"></script>
+
+    </body>
+</html>
