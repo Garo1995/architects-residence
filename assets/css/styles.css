@@ -3019,13 +3019,13 @@ main {
 .new-box-gallery img{
     width: 100%;
     border-radius: 24px;
+    object-fit: cover;
 }
 
 .new-box-gallery-big {
     width: calc(50% - 16px);
-
+    height: 531px;
 }
-
 
 
 
@@ -3487,6 +3487,7 @@ main {
     }
     .new-box-gallery-big {
         width: calc(50% - 10px);
+        height: 400px;
     }
     .main__filters-right-wrapper {
         max-height: 1201px;
