@@ -1581,6 +1581,8 @@ main {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    max-width: 700px;
+    width: 100%;
 }
 .main__callback-checkbox-link {
     font-size: 16px;
@@ -4176,6 +4178,12 @@ main {
     }
     .gallery-top-slider-wrapper {
         margin-top: 48px;
+    }
+    .main__callback-checkbox-text {
+        font-size: 12px;
+    }
+    .main__callback-checkbox {
+        max-width: 530px;
     }
 }
 @media (max-width: 847px) {
