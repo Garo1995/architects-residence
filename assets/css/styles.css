@@ -2399,12 +2399,20 @@ main {
 .consultation-modal__left {
     min-width: 344px;
 }
-.booking-modal__img-wrapper {
-    padding: 23px 32px;
+
+.booking-modal__img-wrapper{
+    padding: 14px 18px;
     margin-bottom: 16px;
+    height: 251px;
+    justify-content: center;
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
 }
 .booking-modal__plan-img {
     width: 100%;
+    height: 100%;
+
 }
 .booking-modal__badges {
     display: flex;
