@@ -1917,7 +1917,7 @@ main {
 }
 .footer__policy {
     color: #fff;
-    text-decoration: underline;
+    text-decoration: unset;
     font-size: 16px;
     font-weight: 500;
 }
@@ -3561,6 +3561,12 @@ main {
         font-size: 14px;
         line-height: 19px;
     }
+    .footer__disclaimer, .footer__copyright {
+        font-size: 14px;
+    }
+    .footer__policy {
+        font-size: 14px;
+    }
 }
 @media (max-width: 1220px) {
     .corpus-info__content {
@@ -3831,7 +3837,11 @@ main {
     .filters-container.active {
         display: block;
     }
-
+    .footer__row--bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
     .filters-close {
         position: absolute;
         top: 20px;
