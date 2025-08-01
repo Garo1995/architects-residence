@@ -1960,6 +1960,7 @@ main {
     display: flex;
 }
 
+
 .main__filters-right {
     flex: 1;
     display: flex;
@@ -3941,7 +3942,11 @@ main {
     .filters-toggle {
         display: none;
     }
+    .filters-container-wrapper{
+        max-width: 342px;
+        width: 100%;
 
+    }
     .filters-container {
         display: block !important;
         width: 100%;
@@ -4778,11 +4783,9 @@ main {
     .footer__br {
         display: block;
     }
-    .main__property-filters-header {
-        justify-content: space-between;
-    }
+
     .main__property {
-        margin-top: 90px;
+        margin-top: 50px;
         margin-bottom: 40px;
     }
     .main__filters-right-wrapper {

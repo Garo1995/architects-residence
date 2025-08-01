@@ -1,3 +1,193 @@
+document.querySelectorAll('.sort-boxes').forEach(function(box) {
+    box.addEventListener('click', function() {
+        this.classList.add('sort-active');
+        document.querySelectorAll('.sort-line').forEach(function(el) {
+            el.classList.remove('sort-active');
+        });
+        document.querySelectorAll('.parking-table-line').forEach(function(el) {
+            el.classList.remove('table-line-opened');
+        });
+        document.querySelectorAll('.parking-table-boxes').forEach(function(el) {
+            el.classList.add('table-line-opened');
+        });
+    });
+});
+
+document.querySelectorAll('.sort-line').forEach(function(line) {
+    line.addEventListener('click', function() {
+        this.classList.add('sort-active');
+        document.querySelectorAll('.sort-boxes').forEach(function(el) {
+            el.classList.remove('sort-active');
+        });
+        document.querySelectorAll('.parking-table-line').forEach(function(el) {
+            el.classList.add('table-line-opened');
+        });
+        document.querySelectorAll('.parking-table-boxes').forEach(function(el) {
+            el.classList.remove('table-line-opened');
+        });
+    });
+});
+
+
+
+document.querySelectorAll('.storerooms-cart').forEach(container => {
+    const modal = container.querySelector('.storerooms-modal');
+    const modalPrice = modal.querySelector('.storerooms-price');
+    const parkingItems = container.querySelectorAll('.click-parking');
+
+    document.addEventListener('click', function(e) {
+        const clickedParking = e.target.closest('.click-parking');
+        const clickedModal = e.target.closest('.storerooms-modal');
+
+        // Проверяем: принадлежит ли к текущему контейнеру
+        const isInThisContainer = clickedParking && container.contains(clickedParking);
+
+        if (isInThisContainer) {
+            // Удалить активность
+            parkingItems.forEach(item => item.classList.remove('parking-active'));
+            clickedParking.classList.add('parking-active');
+
+            // Позиция модалки
+            const parentRect = container.getBoundingClientRect();
+            const itemRect = clickedParking.getBoundingClientRect();
+            const offsetTop = itemRect.top - parentRect.top;
+
+            modal.style.top = offsetTop + 50 + 'px';
+            modal.classList.add('storerooms-modal-opened');
+
+            // Показывать скидку или нет
+            if (clickedParking.classList.contains('has-discount')) {
+                modalPrice.classList.add('discount-visible');
+            } else {
+                modalPrice.classList.remove('discount-visible');
+            }
+
+        } else if (!clickedModal || !container.contains(e.target)) {
+            // Закрыть всё, если клик вне
+            modal.classList.remove('storerooms-modal-opened');
+            modalPrice.classList.remove('discount-visible');
+            parkingItems.forEach(item => item.classList.remove('parking-active'));
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const menuItems = document.querySelectorAll('.menu-parking li');
+const contentBlocks = document.querySelectorAll('.content-block');
+
+menuItems.forEach(item => {
+    item.addEventListener('click', function() {
+        // Удаляем активный класс у всех пунктов меню
+        menuItems.forEach(i => i.classList.remove('menu-parking-active'));
+        this.classList.add('menu-parking-active');
+
+        // Показываем нужный блок
+        const target = this.getAttribute('data-target');
+        contentBlocks.forEach(block => {
+            block.classList.remove('active');
+            if (block.classList.contains(target)) {
+                block.classList.add('active');
+            }
+        });
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const select = document.querySelector('.custom-select-mob');
+const display = select.querySelector('.select-display');
+const options = select.querySelector('.select-options');
+const items = options.querySelectorAll('li');
+const contentBlocksMobile  = document.querySelectorAll('.content-block');
+
+display.addEventListener('click', () => {
+    options.style.display = options.style.display === 'block' ? 'none' : 'block';
+});
+
+items.forEach(item => {
+    item.addEventListener('click', () => {
+        const target = item.getAttribute('data-target');
+
+        // Обновить текст
+        display.textContent = item.textContent;
+
+        // Активный пункт
+        items.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+
+        // Скрываем и показываем нужный блок по классу
+        contentBlocksMobile.forEach(block => {
+            block.classList.remove('active');
+            if (block.classList.contains(target)) {
+                block.classList.add('active');
+            }
+        });
+
+        // Закрыть список
+        options.style.display = 'none';
+    });
+});
+
+document.addEventListener('click', e => {
+    if (!select.contains(e.target)) {
+        options.style.display = 'none';
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -619,20 +809,24 @@ const initFiltersDropdown = () => {
 };
 
 const initMobileFilters = () => {
-    const filterToggleButton = document.querySelector('.filters-toggle');
-    const filterCloseButton = document.querySelector('.filters-close');
-    const filterContainer = document.querySelector('.filters-container');
+    const filterBlocks = document.querySelectorAll('.filters-container-wrapper');
 
-    if (!filterToggleButton || !filterCloseButton || !filterContainer) return;
+    filterBlocks.forEach(wrapper => {
+        const filterToggleButton = wrapper.querySelector('.filters-toggle');
+        const filterCloseButton = wrapper.querySelector('.filters-close');
+        const filterContainer = wrapper.querySelector('.filters-container');
 
-    filterToggleButton.addEventListener('click', () => {
-        filterContainer.classList.add('active');
-        filterToggleButton.classList.add('hidden');
-    });
+        if (!filterToggleButton || !filterCloseButton || !filterContainer) return;
 
-    filterCloseButton.addEventListener('click', () => {
-        filterContainer.classList.remove('active');
-        filterToggleButton.classList.remove('hidden');
+        filterToggleButton.addEventListener('click', () => {
+            filterContainer.classList.add('active');
+            filterToggleButton.classList.add('hidden');
+        });
+
+        filterCloseButton.addEventListener('click', () => {
+            filterContainer.classList.remove('active');
+            filterToggleButton.classList.remove('hidden');
+        });
     });
 };
 
