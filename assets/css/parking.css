@@ -37,6 +37,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    margin-left: auto;
 }
 .sort-boxes, .sort-line{
     display: flex;
@@ -55,6 +56,31 @@
     transition: 0.3s;
     fill: rgb(174, 174, 174);
 }
+
+
+
+
+
+.sort-boxes-two, .sort-line-two{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.sort-boxes-two svg path, .sort-line-two svg path{
+    transition: 0.3s;
+    fill: rgb(174, 174, 174);
+}
+.sort-boxes-two svg rect, .sort-line-two svg rect{
+    transition: 0.3s;
+    fill: rgb(174, 174, 174);
+}
+
+
+
 .sort-active svg rect{
     fill: #000000;
 }
@@ -62,6 +88,13 @@
     fill: #000000;
 }
 
+
+
+.none-for-plan-add{
+    display: none;
+}
+
+
 .parking-table-line{
     width: 100%;
     margin-top: 24px;
@@ -70,64 +103,12 @@
 
 
 
-.parking-table-line{
+.parking-table-line-two{
     width: 100%;
     margin-top: 24px;
     display: none;
 }
 
-.parking-table-menu ul{
-    display: flex;
-    text-decoration: none;
-    border-bottom: 1px solid #AEAEAE;
-}
-.parking-table-menu ul li{
-    color: #AEAEAE;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 100%;
-    display: flex;
-    justify-content: center;
-    max-width: 175px;
-    width: 100%;
-    align-items: center;
-    height: 70px;
-}
-.parking-table-menu ul li:nth-child(1){
-    max-width: 60px;
-}
-
-.parking-table-box{
-    padding: 48px 0 24px;
-    display: flex;
-    align-items: flex-start;
-}
-
-.parking-table-name{
-    max-width: 175px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-.parking-table-name:first-child{
-    max-width: 60px;
-}
-.parking-table-name p{
-    color: #2F2E2E;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 100%;
-    white-space: nowrap;
-
-}
-.parking-table-name strong{
-    color: #2F2E2E;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 100%;
-    white-space: nowrap;
-
-}
 
 
 .parking-table-btn{
@@ -191,6 +172,10 @@
     display: none;
     margin-top: 24px;
 }
+.parking-table-boxes-two{
+    display: none;
+    margin-top: 24px;
+}
 .table-line-opened{
     display: block;
 }
@@ -209,6 +194,7 @@
 .table-boxes-flex{
     display: flex;
     justify-content: space-between;
+    min-height: 183px;
 }
 .table-boxes-info{
     display: flex;
@@ -314,31 +300,31 @@
     z-index: 111;
 }
 .click-parking rect{
-    fill: rgba(255, 255, 255,0.0);
+    fill: rgba(86, 3, 0,0.2);
     transition: 0.3s;
 }
 .click-parking path{
-    fill: rgba(255, 255, 255,0.0);
+    fill: rgba(86, 3, 0,0.2);
     transition: 0.3s;
 
 }
 .click-parking polygon{
-    fill: rgba(255, 255, 255,0.0);
+    fill: rgba(86, 3, 0,0.2);
     transition: 0.3s;
 
 }
 .click-parking:hover rect{
-    fill: rgba(86, 3, 0,0.4);
+    fill: rgba(86, 3, 0,0.5);
 }
 .click-parking:hover path{
-    fill: rgba(86, 3, 0,0.4);
+    fill: rgba(86, 3, 0,0.5);
 }
 .click-parking:hover polygon{
-    fill: rgba(86, 3, 0,0.4);
+    fill: rgba(86, 3, 0,0.5);
 }
 
 .parking-active rect, .parking-active path,  .parking-active polygon{
-    fill: rgba(86, 3, 0,0.4);
+    fill: rgba(86, 3, 0,0.5);
 }
 
 
@@ -439,6 +425,44 @@
     display: none;
 }
 
+
+.modal-plan-parking, .modal-book-parking{
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: none;
+}
+.modal-parking-opened{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-plan-parking .table-boxes-flex {
+    max-width: 376px;
+    width: 100%;
+    margin: 0 auto;
+}
+.modal-plan-parking .modal__title {
+    margin-bottom: 24px;
+}
+
+
+.modal-book-parking .modal__title {
+    margin-bottom: 24px;
+}
+
+.modal-book-parking .project-number {
+    margin: 0 auto 24px;
+    max-width: 360px;
+    width: 100%;
+}
+
+
+
+.section--property-selection .main__property-header{
+    margin-top: 35px;
+}
 
 @media (max-width: 1599px){
     .menu-parking  li {
@@ -621,5 +645,8 @@
     }
     .table-boxes-name span {
         font-size: 16px;
+    }
+    .table-boxes-flex {
+        min-height: 163px;
     }
 }

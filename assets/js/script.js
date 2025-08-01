@@ -10,6 +10,9 @@ document.querySelectorAll('.sort-boxes').forEach(function(box) {
         document.querySelectorAll('.parking-table-boxes').forEach(function(el) {
             el.classList.add('table-line-opened');
         });
+        document.querySelectorAll('.none-for-plan').forEach(function(el) {
+            el.classList.add('none-for-plan-add');
+        });
     });
 });
 
@@ -25,8 +28,80 @@ document.querySelectorAll('.sort-line').forEach(function(line) {
         document.querySelectorAll('.parking-table-boxes').forEach(function(el) {
             el.classList.remove('table-line-opened');
         });
+        document.querySelectorAll('.none-for-plan').forEach(function(el) {
+            el.classList.remove('none-for-plan-add');
+        });
     });
 });
+
+document.querySelectorAll('.sort-boxes-two').forEach(function(box) {
+    box.addEventListener('click', function() {
+        this.classList.add('sort-active');
+        document.querySelectorAll('.sort-line-two').forEach(function(el) {
+            el.classList.remove('sort-active');
+        });
+        document.querySelectorAll('.parking-table-line-two').forEach(function(el) {
+            el.classList.remove('table-line-opened');
+        });
+        document.querySelectorAll('.parking-table-boxes-two').forEach(function(el) {
+            el.classList.add('table-line-opened');
+        });
+        document.querySelectorAll('.none-for-plan').forEach(function(el) {
+            el.classList.add('none-for-plan-add');
+        });
+    });
+});
+
+document.querySelectorAll('.sort-line-two').forEach(function(line) {
+    line.addEventListener('click', function() {
+        this.classList.add('sort-active');
+        document.querySelectorAll('.sort-boxes-two').forEach(function(el) {
+            el.classList.remove('sort-active');
+        });
+        document.querySelectorAll('.parking-table-line-two').forEach(function(el) {
+            el.classList.add('table-line-opened');
+        });
+        document.querySelectorAll('.parking-table-boxes-two').forEach(function(el) {
+            el.classList.remove('table-line-opened');
+        });
+        document.querySelectorAll('.none-for-plan').forEach(function(el) {
+            el.classList.remove('none-for-plan-add');
+        });
+    });
+});
+
+
+document.querySelectorAll('.book-now-plan').forEach(function(modalPlan) {
+    modalPlan.addEventListener('click', function() {
+        document.querySelectorAll('.modal-plan-parking').forEach(function(el) {
+            el.classList.add('modal-parking-opened');
+        });
+    });
+});
+
+
+document.querySelectorAll('.book-parking').forEach(function(modalPlan) {
+    modalPlan.addEventListener('click', function() {
+        document.querySelectorAll('.modal-book-parking').forEach(function(el) {
+            el.classList.add('modal-parking-opened');
+        });
+        document.querySelectorAll('.storerooms-modal').forEach(function(el) {
+            el.classList.remove('storerooms-modal-opened');
+        });
+    });
+});
+
+document.querySelectorAll('.modal__close').forEach(function(modalPlan) {
+    modalPlan.addEventListener('click', function() {
+        document.querySelectorAll('.modal-plan-parking').forEach(function(el) {
+            el.classList.remove('modal-parking-opened');
+        });
+        document.querySelectorAll('.modal-book-parking').forEach(function(el) {
+            el.classList.remove('modal-parking-opened');
+        });
+    });
+});
+
 
 
 
