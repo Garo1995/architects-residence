@@ -627,7 +627,21 @@
     .parking-sort-flex{
         display: none;
     }
-
+    .parking-table-boxes-two{
+        display: none;
+    }
+    .parking-table-line-two{
+        display: block;
+    }
+    .parking-table-boxes{
+        display: none;
+    }
+    .parking-table-line{
+        display: block;
+    }
+    .none-for-plan-add{
+        display: flex;
+    }
 }
 @media (max-width: 767px){
     .table-boxes-box {
